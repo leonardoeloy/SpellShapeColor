@@ -133,6 +133,7 @@
 		F6943E5E14FFE797005C3EE2 /* hud_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F6943E5D14FFE797005C3EE2 /* hud_button.png */; };
 		F6A6EFC415003A9C003B14CC /* spell_ice.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A6EFC215003A9C003B14CC /* spell_ice.png */; };
 		F6A6EFC515003A9C003B14CC /* spell_stone.png in Resources */ = {isa = PBXBuildFile; fileRef = F6A6EFC315003A9C003B14CC /* spell_stone.png */; };
+		F6ADCDD315013CAA00400151 /* explosao.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6ADCDD215013CAA00400151 /* explosao.plist */; };
 		F6D7496D1500002000415BC9 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D7496C1500002000415BC9 /* HUDLayer.m */; };
 		F6D7497315000AE400415BC9 /* spell_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = F6D7497215000AE400415BC9 /* spell_fire.png */; };
 		F6D7497A1500184B00415BC9 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D749791500184B00415BC9 /* Card.m */; };
@@ -386,6 +387,7 @@
 		F6943E5D14FFE797005C3EE2 /* hud_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hud_button.png; path = Resources/hud_button.png; sourceTree = "<group>"; };
 		F6A6EFC215003A9C003B14CC /* spell_ice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spell_ice.png; path = Resources/spell_ice.png; sourceTree = "<group>"; };
 		F6A6EFC315003A9C003B14CC /* spell_stone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spell_stone.png; path = Resources/spell_stone.png; sourceTree = "<group>"; };
+		F6ADCDD215013CAA00400151 /* explosao.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = explosao.plist; path = Resources/explosao.plist; sourceTree = "<group>"; };
 		F6D7496B1500002000415BC9 /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
 		F6D7496C1500002000415BC9 /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
 		F6D7497215000AE400415BC9 /* spell_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spell_fire.png; path = Resources/spell_fire.png; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 		F6943CE414FFB74C005C3EE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F6ADCDD215013CAA00400151 /* explosao.plist */,
 				F613F5FF1501126B003E9A4A /* megasplash.png */,
 				F6A6EFC215003A9C003B14CC /* spell_ice.png */,
 				F6A6EFC315003A9C003B14CC /* spell_stone.png */,
@@ -917,6 +920,7 @@
 				F6A6EFC515003A9C003B14CC /* spell_stone.png in Resources */,
 				F613F6001501126B003E9A4A /* megasplash.png in Resources */,
 				F613F6021501127E003E9A4A /* Default.png in Resources */,
+				F6ADCDD315013CAA00400151 /* explosao.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

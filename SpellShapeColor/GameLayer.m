@@ -90,6 +90,8 @@ static GameLayer *gameLayerInstance;
         [colorHud addCard:iceCard3];
         [colorHud addCard:stoneCard3];   
         
+        [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"explosao.plist"];
+        
         [self scheduleUpdate];
 	}
     
@@ -99,13 +101,21 @@ static GameLayer *gameLayerInstance;
 -(void) update:(ccTime)delta {
     if ([spellHud cardPicked] != nil && [shapeHud cardPicked] != nil && [colorHud cardPicked] != nil
         && [spellHud cardPicked].onDeck && [shapeHud cardPicked].onDeck && [colorHud cardPicked].onDeck) {
-        Shape *square = [self getChildByTag:200];
-        square.visible = NO;
+        Shape *square = (Shape *)[self getChildByTag:200];
+        CCParticleSystem *system = [CCParticleSystemQuad particleWithFile:@"explosao.plist"];
+        system.position = [square sprite].position;
+        square.visible = NO;        
+        [self addChild:system z:1];
+
         
         [spellHud reset];
         [shapeHud reset];
         [colorHud reset];
     }
+}
+
+-(void) loadShapes {
+    
 }
 
 - (void) dealloc
