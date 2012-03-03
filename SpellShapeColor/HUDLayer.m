@@ -54,7 +54,10 @@
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     if (cardPicked == nil) {
-        if (CGRectContainsPoint([sprite boundingBox], [GameLayer locationFromTouch:touch]) && !cardsDisplayed) {
+        BOOL hud = CGRectContainsPoint([sprite boundingBox], [GameLayer locationFromTouch:touch]);
+        CCLOG(@"%i: hud=%i cards=%i", hudIndex, (int)hud, (int)cardsDisplayed);
+        
+        if (hud && !cardsDisplayed) {
             [self displayCards];
         } else if (cardsDisplayed) {
             [self hideCards];
@@ -65,6 +68,7 @@
 }
 
 -(void) displayCards {
+    CCLOG(@"Display cards on %i", hudIndex);
     // Começar pequeno no centro do HUD
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     NSEnumerator *enumerator = [cards objectEnumerator];
@@ -73,21 +77,25 @@
     while (card = (Card *)[enumerator nextObject]) {
         [card sprite].position = sprite.position;
         [card sprite].scale = 0.1f;
+        float cardPositionOffset = (float)[cards indexOfObject:card]/10;
+        int cardIndex = [cards indexOfObject:card]+1;
         
         // Mover para a primeira posição do deck
-        int indexOffset = (winSize.width/8) * card.cardIndex + (winSize.width/10) * card.cardIndex;
-        CGPoint destino = ccp([card sprite].position.x + indexOffset, [card sprite].position.y);
-        CCMoveTo *moveAction = [CCMoveTo actionWithDuration:0.2f position:destino];
+        int x = (winSize.width/8) * cardIndex + (winSize.width/10) * cardIndex;
+        CGPoint destino = ccp([card sprite].position.x + x, [card sprite].position.y);
+        CCMoveTo *moveAction = [CCMoveTo actionWithDuration:0.2f+cardPositionOffset position:destino];
         
         // Chamar onCardReady
         CCCallFuncO *call = [CCCallFuncO actionWithTarget:self selector:@selector(onCardDisplayed:) object:(id)card];
-        CCDelayTime *delay = [CCDelayTime actionWithDuration:0.2f];
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:0.2+cardPositionOffset];
         CCSequence *seq = [CCSequence actions:delay, call, nil];
         
         // Aumentar o tamanho
-        CCAction *scaleAction = [CCScaleTo actionWithDuration:0.2f scale:1.0f];
+        CCAction *scaleAction = [CCScaleTo actionWithDuration:0.2f+cardPositionOffset scale:1.0f];
         
-        [card sprite].visible = true;
+        // Gotta figure out why this opacity doesn't work properly if you set it to 100.0f
+        [card sprite].opacity = 200.0f;
+        [card sprite].visible = YES;
         
         [[card sprite] runAction:scaleAction];
         [[card sprite] runAction:moveAction];
@@ -98,17 +106,18 @@
 }
 
 -(void) hideCards {
+    CCLOG(@"Hide cards on %i", hudIndex);
     NSEnumerator *enumerator = [cards objectEnumerator];
     Card *card;
     
     while (card = (Card *)[enumerator nextObject]) {
+        card.canReceiveTouch = NO;        
+        
         // Caso a carta tenha recebido o toque, ignorar, pois ela será animada para o deck
         if (card.receivedTouch) {
             cardPicked = card;
             continue;
         }
-        
-        card.canReceiveTouch = NO;        
         
         CCMoveTo *moveAction = [CCMoveTo actionWithDuration:0.2f position:sprite.position];
         CCAction *scaleAction = [CCScaleTo actionWithDuration:0.2f scale:0.1f];
@@ -130,34 +139,47 @@
 
 -(void) onCardHidden:(id)obj {
     Card *card = (Card *)obj;
-    [card sprite].visible = false;
+    [card reset];
 }
 
 -(void) onCardDisplayed:(id)obj {
     Card *card = (Card *)obj;
     card.canReceiveTouch = YES;
-    //[card sprite].opacity = 100.0f;
 }
 
 -(void) reset {
+    CCLOG(@"Reset cards on %i", hudIndex);
+    NSAssert(cardPicked != nil, @"Card must be picked for HUD to be reseted!");
+    
+    // Animar carta selecionada de volta para o HUD
     CCMoveTo *moveAction = [CCMoveTo actionWithDuration:0.2f position:sprite.position];
     CCAction *scaleAction = [CCScaleTo actionWithDuration:0.2f scale:0.1f];
     
     // Remover o sprite depois de tudo
     CCCallFuncO *call = [CCCallFuncO actionWithTarget:self selector:@selector(onCardHidden:) object:(id)cardPicked];
     CCDelayTime *delay = [CCDelayTime actionWithDuration:0.2f];
+    CCFadeTo *fadeAction = [CCFadeTo actionWithDuration:1.0f opacity:0.0f];
     CCSequence *seq = [CCSequence actions:delay, call, nil];
     
     [[cardPicked sprite] runAction:scaleAction];
     [[cardPicked sprite] runAction:moveAction];
+    [[cardPicked sprite] runAction:fadeAction];
     [[cardPicked sprite] runAction:seq];
     
     cardPicked = nil;
     cardsDisplayed = NO;
+    
+    for (Card *card in cards) {
+        if (!card.receivedTouch) {
+            [card reset];
+        }
+    }
 }
 
 -(void) dealloc {
     [cards release];
+    sprite = nil;
+    cardPicked = nil;
     
     [super dealloc];
 }

@@ -15,6 +15,7 @@
     BOOL receivedTouch;
     BOOL canReceiveTouch;
     int cardIndex;
+    NSString *attribute;
 }
 
 @property (readonly) CCSprite *sprite;
@@ -22,8 +23,9 @@
 @property (readwrite,assign) BOOL canReceiveTouch;
 @property (readwrite,assign) int cardIndex;
 @property (readonly) BOOL onDeck;
+@property (readonly) NSString *attribute;
 
-+(id) cardWithParentNode:(CCNode *)parentNode withCard:(NSString *)card withIndex:(int)index;
--(id) initWithParentNode:(CCNode *)parentNode withCard:(NSString *)card withIndex:(int)index;
-    
++(id) cardWithParentNode:(CCNode *)parentNode withCard:(NSString *)card withIndex:(int)index withAttribute:(NSString *)attribute_ ;
+-(id) initWithParentNode:(CCNode *)parentNode withCard:(NSString *)card withIndex:(int)index withAttribute:(NSString *)attribute_ ;
+-(void) reset;
 @end

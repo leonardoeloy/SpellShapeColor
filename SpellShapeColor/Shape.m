@@ -45,6 +45,10 @@
 }
 
 -(void) dealloc {
+    sprite = nil;
+    shape = nil;
+    color = nil;
+    
     [super dealloc];
 }
 

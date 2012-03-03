@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F611EB3F15025DED007ED528 /* color_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3915025DED007ED528 /* color_blue.png */; };
+		F611EB4015025DED007ED528 /* color_green.png in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3A15025DED007ED528 /* color_green.png */; };
+		F611EB4115025DED007ED528 /* color_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3B15025DED007ED528 /* color_yellow.png */; };
+		F611EB4215025DED007ED528 /* ice-particles.plist in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3C15025DED007ED528 /* ice-particles.plist */; };
+		F611EB4315025DED007ED528 /* shape_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3D15025DED007ED528 /* shape_circle.png */; };
+		F611EB4415025DED007ED528 /* shape_square.png in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3E15025DED007ED528 /* shape_square.png */; };
 		F613F6001501126B003E9A4A /* megasplash.png in Resources */ = {isa = PBXBuildFile; fileRef = F613F5FF1501126B003E9A4A /* megasplash.png */; };
 		F613F6021501127E003E9A4A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F613F6011501127E003E9A4A /* Default.png */; };
 		F6943CD414FFB74C005C3EE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6943CD314FFB74C005C3EE2 /* QuartzCore.framework */; };
@@ -140,6 +146,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F611EB3915025DED007ED528 /* color_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = color_blue.png; path = Resources/color_blue.png; sourceTree = "<group>"; };
+		F611EB3A15025DED007ED528 /* color_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = color_green.png; path = Resources/color_green.png; sourceTree = "<group>"; };
+		F611EB3B15025DED007ED528 /* color_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = color_yellow.png; path = Resources/color_yellow.png; sourceTree = "<group>"; };
+		F611EB3C15025DED007ED528 /* ice-particles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "ice-particles.plist"; path = "Resources/ice-particles.plist"; sourceTree = "<group>"; };
+		F611EB3D15025DED007ED528 /* shape_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shape_circle.png; path = Resources/shape_circle.png; sourceTree = "<group>"; };
+		F611EB3E15025DED007ED528 /* shape_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shape_square.png; path = Resources/shape_square.png; sourceTree = "<group>"; };
 		F613F5FF1501126B003E9A4A /* megasplash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = megasplash.png; sourceTree = "<group>"; };
 		F613F6011501127E003E9A4A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F6943CCF14FFB74C005C3EE2 /* SpellShapeColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpellShapeColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -461,6 +473,12 @@
 		F6943CE414FFB74C005C3EE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F611EB3915025DED007ED528 /* color_blue.png */,
+				F611EB3A15025DED007ED528 /* color_green.png */,
+				F611EB3B15025DED007ED528 /* color_yellow.png */,
+				F611EB3C15025DED007ED528 /* ice-particles.plist */,
+				F611EB3D15025DED007ED528 /* shape_circle.png */,
+				F611EB3E15025DED007ED528 /* shape_square.png */,
 				F6ADCDD215013CAA00400151 /* explosao.plist */,
 				F613F5FF1501126B003E9A4A /* megasplash.png */,
 				F6A6EFC215003A9C003B14CC /* spell_ice.png */,
@@ -921,6 +939,12 @@
 				F613F6001501126B003E9A4A /* megasplash.png in Resources */,
 				F613F6021501127E003E9A4A /* Default.png in Resources */,
 				F6ADCDD315013CAA00400151 /* explosao.plist in Resources */,
+				F611EB3F15025DED007ED528 /* color_blue.png in Resources */,
+				F611EB4015025DED007ED528 /* color_green.png in Resources */,
+				F611EB4115025DED007ED528 /* color_yellow.png in Resources */,
+				F611EB4215025DED007ED528 /* ice-particles.plist in Resources */,
+				F611EB4315025DED007ED528 /* shape_circle.png in Resources */,
+				F611EB4415025DED007ED528 /* shape_square.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

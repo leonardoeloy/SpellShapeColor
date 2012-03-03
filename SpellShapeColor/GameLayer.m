@@ -15,6 +15,10 @@
 
 static GameLayer *gameLayerInstance;
 
+@interface GameLayer (PrivateMethods)
+-(void) loadLevel;
+@end
+
 // GameLayer implementation
 @implementation GameLayer
 
@@ -51,13 +55,6 @@ static GameLayer *gameLayerInstance;
 		NSAssert(gameLayerInstance == nil, @"Another GameLayer is already in use!");
 		gameLayerInstance = self;
         
-        Shape *square1 = [Shape shapeWithParentNode:self withShape:@"square" withColor:@"green"];
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        [square1 sprite].position = ccp(winSize.width/2,winSize.height - ([[square1 sprite] texture].contentSize.height/2));
-        CCMoveTo *move = [CCMoveTo actionWithDuration:10.0f position:ccp(winSize.width/2,([[square1 sprite] texture].contentSize.height/2))];
-        [[square1 sprite] runAction:move];
-        square1.tag = 200;
-        
         spellHud = [HUDLayer hudWithParentNode:self withIndex:1];
         shapeHud = [HUDLayer hudWithParentNode:self withIndex:2];
         colorHud = [HUDLayer hudWithParentNode:self withIndex:3];
@@ -66,31 +63,31 @@ static GameLayer *gameLayerInstance;
         [shapeHud sprite].position = ccp(([[shapeHud sprite] texture].contentSize.width/2) + 5, ([[shapeHud sprite] texture].contentSize.height/2) + 90);
         [colorHud sprite].position = ccp(([[colorHud sprite] texture].contentSize.width/2) + 5, ([[colorHud sprite] texture].contentSize.height/2) + 50);
         
-        Card *fireCard = [Card cardWithParentNode:self withCard:@"spell_fire.png" withIndex:1];
-        Card *iceCard = [Card cardWithParentNode:self withCard:@"spell_ice.png" withIndex:2];   
-        Card *stoneCard = [Card cardWithParentNode:self withCard:@"spell_stone.png" withIndex:3];
+        Card *fireCard = [Card cardWithParentNode:self withCard:@"spell_fire.png" withIndex:1 withAttribute:@"explosao.plist"];
+        Card *iceCard = [Card cardWithParentNode:self withCard:@"spell_ice.png" withIndex:1 withAttribute:@"ice-particles.plist"];   
+        //Card *stoneCard = [Card cardWithParentNode:self withCard:@"spell_stone.png" withIndex:3];
         
-        Card *fireCard2 = [Card cardWithParentNode:self withCard:@"spell_fire.png" withIndex:1];
-        Card *iceCard2 = [Card cardWithParentNode:self withCard:@"spell_ice.png" withIndex:2];   
-        Card *stoneCard2 = [Card cardWithParentNode:self withCard:@"spell_stone.png" withIndex:3];
+        Card *squareCard = [Card cardWithParentNode:self withCard:@"shape_square.png" withIndex:2 withAttribute:@"square"];
+        Card *circleCard = [Card cardWithParentNode:self withCard:@"shape_circle.png" withIndex:2 withAttribute:@"circle"];   
         
-        Card *fireCard3 = [Card cardWithParentNode:self withCard:@"spell_fire.png" withIndex:1];
-        Card *iceCard3 = [Card cardWithParentNode:self withCard:@"spell_ice.png" withIndex:2];   
-        Card *stoneCard3 = [Card cardWithParentNode:self withCard:@"spell_stone.png" withIndex:3];        
+        Card *yellowCard = [Card cardWithParentNode:self withCard:@"color_yellow.png" withIndex:3 withAttribute:@"yellow"];
+        Card *blueCard = [Card cardWithParentNode:self withCard:@"color_blue.png" withIndex:3 withAttribute:@"blue"];   
+        Card *greenCard = [Card cardWithParentNode:self withCard:@"color_green.png" withIndex:3 withAttribute:@"green"];        
         
         [spellHud addCard:fireCard];
         [spellHud addCard:iceCard];
-        [spellHud addCard:stoneCard];  
         
-        [shapeHud addCard:fireCard2];
-        [shapeHud addCard:iceCard2];
-        [shapeHud addCard:stoneCard2];  
+        [shapeHud addCard:squareCard];
+        [shapeHud addCard:circleCard]; 
         
-        [colorHud addCard:fireCard3];
-        [colorHud addCard:iceCard3];
-        [colorHud addCard:stoneCard3];   
+        [colorHud addCard:yellowCard];
+        [colorHud addCard:blueCard];
+        [colorHud addCard:greenCard];   
         
         [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"explosao.plist"];
+        [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"ice-particles.plist"];        
+        
+        [self loadLevel];
         
         [self scheduleUpdate];
 	}
@@ -101,26 +98,78 @@ static GameLayer *gameLayerInstance;
 -(void) update:(ccTime)delta {
     if ([spellHud cardPicked] != nil && [shapeHud cardPicked] != nil && [colorHud cardPicked] != nil
         && [spellHud cardPicked].onDeck && [shapeHud cardPicked].onDeck && [colorHud cardPicked].onDeck) {
-        Shape *square = (Shape *)[self getChildByTag:200];
-        CCParticleSystem *system = [CCParticleSystemQuad particleWithFile:@"explosao.plist"];
-        system.position = [square sprite].position;
-        square.visible = NO;        
-        [self addChild:system z:1];
-
+        NSEnumerator *enumerator = [shapes objectEnumerator];
+        Shape *shape;
+        NSString *particleFile = [spellHud cardPicked].attribute;
+        NSString *selectedShape = [shapeHud cardPicked].attribute;
+        NSString *selectedColor = [colorHud cardPicked].attribute;
         
+        while (shape = (Shape *)[enumerator nextObject]) {
+            if ([selectedShape isEqualToString:shape.shape] && [selectedColor isEqualToString:shape.color]) {
+                CCParticleSystem *system = [CCParticleSystemQuad particleWithFile:particleFile];
+                system.position = [shape sprite].position; 
+                [self addChild:system z:1];               
+                
+                if ([particleFile isEqualToString:@"explosao.plist"]) {
+                    shape.visible = NO;       
+                } else {
+                    [[shape sprite] stopAllActions];
+                }
+            }                                                    
+        }
+            
         [spellHud reset];
         [shapeHud reset];
         [colorHud reset];
     }
 }
 
--(void) loadShapes {
+-(void) loadLevel {
+    NSString *level = @"Sg;  ;Cy;Sy;Sb";
+    NSArray *levelShapes = [level componentsSeparatedByString:@";"];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    shapes = [[NSMutableArray alloc] init];
     
+    for (NSString *strShape in levelShapes) {
+        NSString *shapeType = nil;
+        NSString *colorType = nil;
+        
+        // Obter o formato
+        switch ([strShape characterAtIndex:0]) {
+            case 'S': shapeType = @"square"; break;
+            case 'C': shapeType = @"circle"; break;
+            default: CCLOG(@"Shape '%c' not recognized", [strShape characterAtIndex:0]);
+        }
+        
+        // Obter o formato
+        switch ([strShape characterAtIndex:1]) {
+            case 'g': colorType = @"green"; break;
+            case 'b': colorType = @"blue"; break;
+            case 'y': colorType = @"yellow"; break;                
+            default: CCLOG(@"Color '%c' not recognized", [strShape characterAtIndex:1]);
+        }
+        
+        if (shapeType == nil || colorType == nil) {
+            CCLOG(@"Couldn't draw shape!");
+            continue;
+        }
+        
+        Shape *shape = [Shape shapeWithParentNode:self withShape:shapeType withColor:colorType];
+        int position = [levelShapes indexOfObject:strShape];
+        int indexOffset = [[shape sprite] texture].contentSize.width/2 + (65 * position);
+        [shape sprite].position = ccp(indexOffset, winSize.height - ([[shape sprite] texture].contentSize.height/2));
+        CCMoveTo *move = [CCMoveTo actionWithDuration:20.0f position:ccp(indexOffset,([[shape sprite] texture].contentSize.height/2))];
+        [[shape sprite] runAction:move];
+        
+        [shapes addObject:shape];
+    }   
 }
 
 - (void) dealloc
 {
     gameLayerInstance = nil;
+    [shapes release];
+    
 	[super dealloc];
 }
 @end

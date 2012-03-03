@@ -15,7 +15,7 @@
     HUDLayer *spellHud;
     HUDLayer *shapeHud;
     HUDLayer *colorHud;    
-    
+    NSMutableArray *shapes;
 }
 
 +(CCScene *) scene;
