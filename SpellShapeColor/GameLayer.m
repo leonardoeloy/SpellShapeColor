@@ -54,14 +54,11 @@ static GameLayer *gameLayerInstance;
 	if ((self = [super init])) {        
 		NSAssert(gameLayerInstance == nil, @"Another GameLayer is already in use!");
 		gameLayerInstance = self;
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
         
-        spellHud = [HUDLayer hudWithParentNode:self withIndex:1];
-        shapeHud = [HUDLayer hudWithParentNode:self withIndex:2];
-        colorHud = [HUDLayer hudWithParentNode:self withIndex:3];
-        
-        [spellHud sprite].position = ccp(([[spellHud sprite] texture].contentSize.width/2) + 5, ([[spellHud sprite] texture].contentSize.height/2) + 130);
-        [shapeHud sprite].position = ccp(([[shapeHud sprite] texture].contentSize.width/2) + 5, ([[shapeHud sprite] texture].contentSize.height/2) + 90);
-        [colorHud sprite].position = ccp(([[colorHud sprite] texture].contentSize.width/2) + 5, ([[colorHud sprite] texture].contentSize.height/2) + 50);
+        CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
+        background.position = ccp(winSize.width/2, winSize.height/2);
+        [self addChild:background z:-1];       
         
         Card *fireCard = [Card cardWithParentNode:self withCard:@"spell_fire.png" withIndex:1 withAttribute:@"explosao.plist"];
         Card *iceCard = [Card cardWithParentNode:self withCard:@"spell_ice.png" withIndex:1 withAttribute:@"ice-particles.plist"];   
@@ -73,19 +70,26 @@ static GameLayer *gameLayerInstance;
         Card *yellowCard = [Card cardWithParentNode:self withCard:@"color_yellow.png" withIndex:3 withAttribute:@"yellow"];
         Card *blueCard = [Card cardWithParentNode:self withCard:@"color_blue.png" withIndex:3 withAttribute:@"blue"];   
         Card *greenCard = [Card cardWithParentNode:self withCard:@"color_green.png" withIndex:3 withAttribute:@"green"];        
+                
+        spellHud = [HUDLayer hudWithParentNode:self withIndex:1];
+        shapeHud = [HUDLayer hudWithParentNode:self withIndex:2];
+        colorHud = [HUDLayer hudWithParentNode:self withIndex:3];
         
         [spellHud addCard:fireCard];
+        [spellHud sprite].position = ccp([[fireCard sprite] texture].contentSize.width/2 + 15, [[fireCard sprite] texture].contentSize.height/2 + 5);        
         [spellHud addCard:iceCard];
         
         [shapeHud addCard:squareCard];
+        [shapeHud sprite].position = ccp(([[shapeHud sprite] texture].contentSize.width/2) + 5, ([[shapeHud sprite] texture].contentSize.height/2) + 90);        
         [shapeHud addCard:circleCard]; 
         
         [colorHud addCard:yellowCard];
+        [colorHud sprite].position = ccp(([[colorHud sprite] texture].contentSize.width/2) + 5, ([[colorHud sprite] texture].contentSize.height/2) + 50);         
         [colorHud addCard:blueCard];
         [colorHud addCard:greenCard];   
         
         [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"explosao.plist"];
-        [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"ice-particles.plist"];        
+        [ARCH_OPTIMAL_PARTICLE_SYSTEM particleWithFile:@"ice-particles.plist"];     
         
         [self loadLevel];
         

@@ -35,7 +35,7 @@
         
         [parentNode addChild:self z:2];
         
-        sprite = [CCSprite spriteWithFile:@"hud_button.png"];
+        sprite = [CCSprite spriteWithFile:@"hud_button2.png"];
         cardsDisplayed = NO;
         cardPicked = nil;
         hudIndex = index;
@@ -51,6 +51,7 @@
 -(void) addCard:(Card *)card {
     [cards addObject:card];
 }
+
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     if (cardPicked == nil) {

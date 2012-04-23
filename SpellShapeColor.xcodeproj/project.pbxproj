@@ -14,7 +14,6 @@
 		F611EB4315025DED007ED528 /* shape_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3D15025DED007ED528 /* shape_circle.png */; };
 		F611EB4415025DED007ED528 /* shape_square.png in Resources */ = {isa = PBXBuildFile; fileRef = F611EB3E15025DED007ED528 /* shape_square.png */; };
 		F613F6001501126B003E9A4A /* megasplash.png in Resources */ = {isa = PBXBuildFile; fileRef = F613F5FF1501126B003E9A4A /* megasplash.png */; };
-		F613F6021501127E003E9A4A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F613F6011501127E003E9A4A /* Default.png */; };
 		F6943CD414FFB74C005C3EE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6943CD314FFB74C005C3EE2 /* QuartzCore.framework */; };
 		F6943CD614FFB74C005C3EE2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6943CD514FFB74C005C3EE2 /* OpenGLES.framework */; };
 		F6943CD814FFB74C005C3EE2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6943CD714FFB74C005C3EE2 /* OpenAL.framework */; };
@@ -143,6 +142,9 @@
 		F6D7496D1500002000415BC9 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D7496C1500002000415BC9 /* HUDLayer.m */; };
 		F6D7497315000AE400415BC9 /* spell_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = F6D7497215000AE400415BC9 /* spell_fire.png */; };
 		F6D7497A1500184B00415BC9 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D749791500184B00415BC9 /* Card.m */; };
+		F6E5040D15122E7600D368B7 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E5040C15122E7600D368B7 /* background.png */; };
+		F6E505A31512325B00D368B7 /* waterfall-particle.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6E505A21512325B00D368B7 /* waterfall-particle.plist */; };
+		F6EA708B15126885000EACC9 /* hud_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = F6EA708A15126885000EACC9 /* hud_button2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,7 +155,6 @@
 		F611EB3D15025DED007ED528 /* shape_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shape_circle.png; path = Resources/shape_circle.png; sourceTree = "<group>"; };
 		F611EB3E15025DED007ED528 /* shape_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shape_square.png; path = Resources/shape_square.png; sourceTree = "<group>"; };
 		F613F5FF1501126B003E9A4A /* megasplash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = megasplash.png; sourceTree = "<group>"; };
-		F613F6011501127E003E9A4A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F6943CCF14FFB74C005C3EE2 /* SpellShapeColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpellShapeColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6943CD314FFB74C005C3EE2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F6943CD514FFB74C005C3EE2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -394,7 +395,7 @@
 		F6943E5214FFCEAC005C3EE2 /* circle_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_green.png; sourceTree = "<group>"; };
 		F6943E5314FFCEAC005C3EE2 /* circle_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_yellow.png; sourceTree = "<group>"; };
 		F6943E5414FFCEAC005C3EE2 /* square_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square_blue.png; sourceTree = "<group>"; };
-		F6943E5514FFCEAC005C3EE2 /* square_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = square_green.png; path = Resources/shapes/square_green.png; sourceTree = "<group>"; };
+		F6943E5514FFCEAC005C3EE2 /* square_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square_green.png; sourceTree = "<group>"; };
 		F6943E5614FFCEAC005C3EE2 /* square_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square_yellow.png; sourceTree = "<group>"; };
 		F6943E5D14FFE797005C3EE2 /* hud_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hud_button.png; path = Resources/hud_button.png; sourceTree = "<group>"; };
 		F6A6EFC215003A9C003B14CC /* spell_ice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spell_ice.png; path = Resources/spell_ice.png; sourceTree = "<group>"; };
@@ -405,6 +406,9 @@
 		F6D7497215000AE400415BC9 /* spell_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spell_fire.png; path = Resources/spell_fire.png; sourceTree = "<group>"; };
 		F6D749781500184B00415BC9 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		F6D749791500184B00415BC9 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		F6E5040C15122E7600D368B7 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
+		F6E505A21512325B00D368B7 /* waterfall-particle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "waterfall-particle.plist"; path = "Resources/waterfall-particle.plist"; sourceTree = "<group>"; };
+		F6EA708A15126885000EACC9 /* hud_button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hud_button2.png; path = Resources/hud_button2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,7 +433,6 @@
 		F6943CC414FFB74C005C3EE2 = {
 			isa = PBXGroup;
 			children = (
-				F613F6011501127E003E9A4A /* Default.png */,
 				F6943CE314FFB74C005C3EE2 /* SpellShapeColor */,
 				F6943CD214FFB74C005C3EE2 /* Frameworks */,
 				F6943CD014FFB74C005C3EE2 /* Products */,
@@ -473,6 +476,9 @@
 		F6943CE414FFB74C005C3EE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F6EA708A15126885000EACC9 /* hud_button2.png */,
+				F6E505A21512325B00D368B7 /* waterfall-particle.plist */,
+				F6E5040C15122E7600D368B7 /* background.png */,
 				F611EB3915025DED007ED528 /* color_blue.png */,
 				F611EB3A15025DED007ED528 /* color_green.png */,
 				F611EB3B15025DED007ED528 /* color_yellow.png */,
@@ -485,7 +491,6 @@
 				F6A6EFC315003A9C003B14CC /* spell_stone.png */,
 				F6D7497215000AE400415BC9 /* spell_fire.png */,
 				F6943E5D14FFE797005C3EE2 /* hud_button.png */,
-				F6943E5514FFCEAC005C3EE2 /* square_green.png */,
 				F6943E5014FFCEAC005C3EE2 /* shapes */,
 				F6943CE714FFB74C005C3EE2 /* fps_images.png */,
 				F6943CE914FFB74C005C3EE2 /* Icon-72.png */,
@@ -858,6 +863,7 @@
 		F6943E5014FFCEAC005C3EE2 /* shapes */ = {
 			isa = PBXGroup;
 			children = (
+				F6943E5514FFCEAC005C3EE2 /* square_green.png */,
 				F6943E5114FFCEAC005C3EE2 /* circle_blue.png */,
 				F6943E5214FFCEAC005C3EE2 /* circle_green.png */,
 				F6943E5314FFCEAC005C3EE2 /* circle_yellow.png */,
@@ -937,7 +943,6 @@
 				F6A6EFC415003A9C003B14CC /* spell_ice.png in Resources */,
 				F6A6EFC515003A9C003B14CC /* spell_stone.png in Resources */,
 				F613F6001501126B003E9A4A /* megasplash.png in Resources */,
-				F613F6021501127E003E9A4A /* Default.png in Resources */,
 				F6ADCDD315013CAA00400151 /* explosao.plist in Resources */,
 				F611EB3F15025DED007ED528 /* color_blue.png in Resources */,
 				F611EB4015025DED007ED528 /* color_green.png in Resources */,
@@ -945,6 +950,9 @@
 				F611EB4215025DED007ED528 /* ice-particles.plist in Resources */,
 				F611EB4315025DED007ED528 /* shape_circle.png in Resources */,
 				F611EB4415025DED007ED528 /* shape_square.png in Resources */,
+				F6E5040D15122E7600D368B7 /* background.png in Resources */,
+				F6E505A31512325B00D368B7 /* waterfall-particle.plist in Resources */,
+				F6EA708B15126885000EACC9 /* hud_button2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,6 +1074,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1074,10 +1083,12 @@
 					"COCOS2D_DEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1086,14 +1097,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1102,15 +1116,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aldenor Abrantes (CEQ2W6U3P6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SpellShapeColor/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = SpellShapeColor/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "32514C8C-26E1-42C9-BBBD-4ED5664BC0F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1119,14 +1138,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aldenor Abrantes (CEQ2W6U3P6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SpellShapeColor/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = SpellShapeColor/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "32514C8C-26E1-42C9-BBBD-4ED5664BC0F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
